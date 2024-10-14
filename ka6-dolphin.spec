@@ -156,6 +156,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/config.kcfg/dolphin_versioncontrolsettings.kcfg
 %{_datadir}/dbus-1/interfaces/org.freedesktop.FileManager1.xml
 %{_datadir}/dbus-1/services/org.kde.dolphin.FileManager1.service
+%dir %{_datadir}/dolphin
 %{_datadir}/dolphin/dolphinpartactions.desktop
 %{_datadir}/kconf_update/dolphin_detailsmodesettings.upd
 %{_datadir}/kglobalaccel/org.kde.dolphin.desktop
