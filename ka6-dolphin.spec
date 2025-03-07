@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	24.12.2
+%define		kdeappsver	24.12.3
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Name:		ka6-%{kaname}
-Version:	24.12.2
+Version:	24.12.3
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	873aa759cc10787ec4cbcdfd3914635f
+# Source0-md5:	306fc4ac9f426cbc6ca33a07f5c98892
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
