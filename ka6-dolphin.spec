@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.04.3
+%define		kdeappsver	25.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Name:		ka6-%{kaname}
-Version:	25.04.3
+Version:	25.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	f09e2ef5cccca24af2f1f65168c3554a
+# Source0-md5:	f730772b366f7c00c86113e70203ffb4
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
@@ -151,6 +151,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphingeneral.so
 %attr(755,root,root) %{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
 %attr(755,root,root) %{_libdir}/qt6/plugins/kf6/parts/dolphinpart.so
+%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kfileitemaction/setfoldericonitemaction.so
 %{_desktopdir}/org.kde.dolphin.desktop
 %{_datadir}/config.kcfg/dolphin_compactmodesettings.kcfg
 %{_datadir}/config.kcfg/dolphin_contentdisplaysettings.kcfg
@@ -171,11 +172,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/qlogging-categories6/dolphin.categories
 %{zsh_compdir}/_dolphin
 %{_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
-%attr(755,root,root) %{_datadir}/kconf_update/dolphin_directorysizemode.py
-%{_datadir}/kconf_update/dolphin_directorysizemode.upd
 %attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kfileitemaction/movetonewfolderitemaction.so
 %attr(755,root,root) %{_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
 %{_datadir}/kconf_update/dolphin_statusandlocationbarssettings.upd
+%attr(755,root,root) %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
+%{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.upd
 
 %files devel
 %defattr(644,root,root,755)
