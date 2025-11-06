@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.08.2
+%define		kdeappsver	25.08.3
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Name:		ka6-%{kaname}
-Version:	25.08.2
-Release:	2
+Version:	25.08.3
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	a3db67b4fae30fb101bc84e5d5f1e780
+# Source0-md5:	fe067cd1e8405d416bd17ef5db2ff31f
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
@@ -143,16 +143,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/dolphin
 %attr(755,root,root) %{_bindir}/servicemenuinstaller
 %{systemduserunitdir}/plasma-dolphin.service
-%attr(755,root,root) %{_libdir}/libdolphinprivate.so.*.*
+%{_libdir}/libdolphinprivate.so.*.*
 %ghost %{_libdir}/libdolphinprivate.so.6
-%attr(755,root,root) %{_libdir}/libdolphinvcs.so.*.*
+%{_libdir}/libdolphinvcs.so.*.*
 %ghost %{_libdir}/libdolphinvcs.so.6
 %dir %{_libdir}/qt6/plugins/dolphin
 %dir %{_libdir}/qt6/plugins/dolphin/kcms
-%attr(755,root,root) %{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphingeneral.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/parts/dolphinpart.so
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kfileitemaction/setfoldericonitemaction.so
+%{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphingeneral.so
+%{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
+%{_libdir}/qt6/plugins/kf6/parts/dolphinpart.so
+%{_libdir}/qt6/plugins/kf6/kfileitemaction/setfoldericonitemaction.so
 %{_desktopdir}/org.kde.dolphin.desktop
 %{_datadir}/config.kcfg/dolphin_compactmodesettings.kcfg
 %{_datadir}/config.kcfg/dolphin_contentdisplaysettings.kcfg
@@ -173,7 +173,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/qlogging-categories6/dolphin.categories
 %{zsh_compdir}/_dolphin
 %{_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
-%attr(755,root,root) %{_libdir}/qt6/plugins/kf6/kfileitemaction/movetonewfolderitemaction.so
+%{_libdir}/qt6/plugins/kf6/kfileitemaction/movetonewfolderitemaction.so
 %attr(755,root,root) %{_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
 %{_datadir}/kconf_update/dolphin_statusandlocationbarssettings.upd
 %attr(755,root,root) %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
