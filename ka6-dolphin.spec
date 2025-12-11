@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.08.3
+%define		kdeappsver	25.12.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Name:		ka6-%{kaname}
-Version:	25.08.3
-Release:	2
+Version:	25.12.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	fe067cd1e8405d416bd17ef5db2ff31f
+# Source0-md5:	e7719e343a44ec2fe1925dc5eafc3ea5
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
@@ -152,10 +152,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphingeneral.so
 %{_libdir}/qt6/plugins/dolphin/kcms/kcm_dolphinviewmodes.so
 %{_libdir}/qt6/plugins/kf6/parts/dolphinpart.so
+%{_libdir}/qt6/plugins/kf6/kfileitemaction/hidefileitemaction.so
 %{_libdir}/qt6/plugins/kf6/kfileitemaction/setfoldericonitemaction.so
 %{_desktopdir}/org.kde.dolphin.desktop
 %{_datadir}/config.kcfg/dolphin_compactmodesettings.kcfg
-%{_datadir}/config.kcfg/dolphin_contentdisplaysettings.kcfg
 %{_datadir}/config.kcfg/dolphin_contextmenusettings.kcfg
 %{_datadir}/config.kcfg/dolphin_detailsmodesettings.kcfg
 %{_datadir}/config.kcfg/dolphin_directoryviewpropertysettings.kcfg
