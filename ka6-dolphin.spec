@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.12.0
+%define		kdeappsver	25.12.1
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Name:		ka6-%{kaname}
-Version:	25.12.0
+Version:	25.12.1
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	e7719e343a44ec2fe1925dc5eafc3ea5
+# Source0-md5:	323156b81fa792f3a5914ced18ea9dd6
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
@@ -45,7 +45,7 @@ BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	ruby-test-unit
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
-Requires(post,postun):	desktop-file-utils
+Requires:	%{name}-data = %{version}-%{release}
 %requires_eq_to Qt6Core Qt6Core-devel
 Obsoletes:	ka5-%{kaname} < %{version}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -85,6 +85,19 @@ dostępne jako dokowalne panele, pozwalając przemieszczać się do woli i
 wyświetlać to co chcesz • Wiele kart • Informacyjne okna dialogowe nie
 drażnią użytkownika • Wsparcie dla Cofnij/Powtórz • Przeźroczysty
 dostęp do sieci korzystający z systemu KIO.
+
+%package data
+Summary:	Data files for %{kaname}
+Summary(pl.UTF-8):	Dane dla %{kaname}
+Group:		X11/Applications
+Requires(post,postun):	desktop-file-utils
+BuildArch:	noarch
+
+%description data
+Data files for %{kaname}.
+
+%description data -l pl.UTF-8
+Dane dla %{kaname}.
 
 %package devel
 Summary:	Header files for %{kaname} development
@@ -132,13 +145,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 /sbin/ldconfig
+
+%post data
 %update_desktop_database_post
 
 %postun
 /sbin/ldconfig
+
+%postun data
 %update_desktop_database_postun
 
-%files -f %{kaname}.lang
+%files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/dolphin
 %attr(755,root,root) %{_bindir}/servicemenuinstaller
@@ -154,6 +171,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/qt6/plugins/kf6/parts/dolphinpart.so
 %{_libdir}/qt6/plugins/kf6/kfileitemaction/hidefileitemaction.so
 %{_libdir}/qt6/plugins/kf6/kfileitemaction/setfoldericonitemaction.so
+%{zsh_compdir}/_dolphin
+%{_libdir}/qt6/plugins/kf6/kfileitemaction/movetonewfolderitemaction.so
+%attr(755,root,root) %{_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
+%attr(755,root,root) %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
+
+%files data -f %{kaname}.lang
+%defattr(644,root,root,755)
 %{_desktopdir}/org.kde.dolphin.desktop
 %{_datadir}/config.kcfg/dolphin_compactmodesettings.kcfg
 %{_datadir}/config.kcfg/dolphin_contextmenusettings.kcfg
@@ -171,12 +195,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/knsrcfiles/servicemenu.knsrc
 %{_datadir}/metainfo/org.kde.dolphin.appdata.xml
 %{_datadir}/qlogging-categories6/dolphin.categories
-%{zsh_compdir}/_dolphin
 %{_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
-%{_libdir}/qt6/plugins/kf6/kfileitemaction/movetonewfolderitemaction.so
-%attr(755,root,root) %{_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
 %{_datadir}/kconf_update/dolphin_statusandlocationbarssettings.upd
-%attr(755,root,root) %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
 %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.upd
 
 %files devel
