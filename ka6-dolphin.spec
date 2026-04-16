@@ -1,18 +1,18 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	25.12.3
+%define		kdeappsver	26.04.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Name:		ka6-%{kaname}
-Version:	25.12.3
-Release:	2
+Version:	26.04.0
+Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	8b9ada199745cf18be6397cc66a4e347
+# Source0-md5:	20ae54a13f0810e591e8ddfe4d04ec29
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
@@ -174,6 +174,7 @@ rm -rf $RPM_BUILD_ROOT
 %{zsh_compdir}/_dolphin
 %{_libdir}/qt6/plugins/kf6/kfileitemaction/movetonewfolderitemaction.so
 %attr(755,root,root) %{_libdir}/kconf_update_bin/dolphin_25.04_update_statusandlocationbarssettings
+%attr(755,root,root) %{_libdir}/kconf_update_bin/dolphin_update_splitviewsettings
 %attr(755,root,root) %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.py
 
 %files data -f %{kaname}.lang
