@@ -1,19 +1,19 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeappsver	26.04.3
+%define		kdeappsver	26.08.0
 %define		kframever	5.94.0
 %define		qtver		5.15.2
 %define		kaname		dolphin
 Summary:	File manager
 Summary(pl.UTF-8):	Zarządca plików
 Name:		ka6-%{kaname}
-Version:	26.04.3
+Version:	26.08.0
 Release:	1
 License:	GPL v2+/LGPL v2.1+
 Group:		X11/Libraries
 Source0:	https://download.kde.org/stable/release-service/%{kdeappsver}/src/%{kaname}-%{version}.tar.xz
-# Source0-md5:	d16879ed6c66dbaff6e9123916c781c0
+# Source0-md5:	630c007d9a3cedc2062db090b080144b
 URL:		http://www.kde.org/
 BuildRequires:	Qt6Core-devel >= %{qtver}
 BuildRequires:	cmake >= 3.20
@@ -200,6 +200,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/hicolor/scalable/apps/org.kde.dolphin.svg
 %{_datadir}/kconf_update/dolphin_statusandlocationbarssettings.upd
 %{_datadir}/kconf_update/dolphin_replace_view_mode_with_view_settings_in_toolbar.upd
+%attr(755,root,root) %{_datadir}/kconf_update/dolphin_tab_key_shortcut_for_focus_other_view.py
+%{_datadir}/kconf_update/dolphin_tab_key_shortcut_for_focus_other_view.upd
 
 %files devel
 %defattr(644,root,root,755)
